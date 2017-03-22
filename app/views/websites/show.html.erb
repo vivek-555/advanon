@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Top level domain:</strong>
+  <%= @website.top_level_domain %>
+</p>
+
+<%= link_to 'Edit', edit_website_path(@website) %> |
+<%= link_to 'Back', websites_path %>
