@@ -45,3 +45,6 @@ Things you may want to cover:
 
 # rails generate migration AddWebsiteToBookmark website_id:string
 # rake db:migrate
+
+# rails generate model tag name:string
+# rails generate model tagging bookmark:belongs_to tag:belongs_to

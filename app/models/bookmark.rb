@@ -2,6 +2,9 @@ class Bookmark < ApplicationRecord
   belongs_to :user
   belongs_to :website, optional: true
 
+  has_many :taggings
+  has_many :tags, through: :taggings
+
   # ensure of presence and minimum length of 3 characters
   validates :title, :short_url, length: {minimum: 3}, presence: true
   # ensure the presence and a valid url
@@ -12,6 +15,17 @@ class Bookmark < ApplicationRecord
 
   # only set_website if url is changed
   before_save :set_website, if: :url_changed?
+
+  def all_tags=(names)
+    self.tags = names.strip.split(",").map do |name|
+      next if name.strip.blank?
+      Tag.where(name: name.strip).first_or_create!
+    end
+  end
+
+  def all_tags
+    self.tags.map(&:name).join(", ")
+  end
 
   private
 

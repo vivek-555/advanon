@@ -77,6 +77,6 @@ class BookmarksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
-      params.require(:bookmark).permit(:title, :url, :short_url).merge(user: current_user)
+      params.require(:bookmark).permit(:title, :url, :short_url, :all_tags).merge(user: current_user)
     end
 end
