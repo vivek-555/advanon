@@ -62,6 +62,18 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def search
+    keyword = params[:keyword].downcase
+
+    if keyword.present?
+      @bookmarks = Bookmark.joins("left join taggings tg ON bookmarks.id = tg.bookmark_id left join tags t ON tg.tag_id = t.id")
+                       .where(" lower(title) like :keyword or lower(url) like :keyword or lower(short_url) like :keyword
+                          or lower(t.name) like :keyword", {keyword: "%#{keyword}%"})
+                       .order("id desc").paginate(:per_page => 5, :page => params[:page])
+      render :index
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bookmark

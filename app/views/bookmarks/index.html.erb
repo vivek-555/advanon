@@ -2,6 +2,13 @@
 
 <h1>Bookmarks</h1>
 
+<%= form_tag search_bookmarks_path do |f| %>
+
+    <%= text_field_tag "Keyword", "", name: "keyword", placeholder: "Search on bookmark, url and tags" %>
+    <%= button_tag "Search" %>
+
+<% end %>
+
 <table>
   <thead>
     <tr>
