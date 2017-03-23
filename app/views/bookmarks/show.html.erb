@@ -1,24 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @bookmark.title %>
-</p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @bookmark.url %>
-</p>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to "Bookmarks", bookmarks_path %>
+  </li>
+  <li> <%= @bookmark.title  %></li>
 
-<p>
-  <strong>Short url:</strong>
-  <%= @bookmark.short_url %>
-</p>
+  <%= link_to 'Edit', edit_bookmark_path(@bookmark), class: "pull-right" %>
+</ul>
 
-<p>
-  <strong>Tags:</strong>
-  <%= @bookmark.all_tags %>
-</p>
+<h3>Bookmark detail</h3>
 
-<%= link_to 'Edit', edit_bookmark_path(@bookmark) %> |
-<%= link_to 'Back', bookmarks_path %>
+<div class="col-sm-6">
+  <form class="form-horizontal">
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Title</label>
+
+      <div class="col-sm-10">
+        <div class="form-control-static">
+          <%= @bookmark.title %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Url</label>
+
+      <div class="col-sm-10">
+        <div class="form-control-static">
+          <%= @bookmark.url %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Short url</label>
+
+      <div class="col-sm-10">
+        <div class="form-control-static">
+          <%= @bookmark.short_url %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Tags</label>
+
+      <div class="col-sm-10">
+        <div class="form-control-static">
+          <%= @bookmark.all_tags %>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

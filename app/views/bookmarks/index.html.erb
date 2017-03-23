@@ -1,27 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bookmarks</h1>
+<div class="row">
+  <div class="col-sm-8">
+    <h3>Bookmarks</h3>
+  </div>
+  <div class="col-sm-4">
+    <div class="inline-block">
+    <%= form_tag search_bookmarks_path, class: 'form-inline' do |f| %>
 
-<%= form_tag search_bookmarks_path do |f| %>
+        <div class="form-group">
+          <div class="col-sm-8">
+            <%= text_field_tag 'Keyword', '', name: 'keyword', class: 'form-control', placeholder: 'Search on bookmark, url and tags' %>
+          </div>
 
-    <%= text_field_tag "Keyword", "", name: "keyword", placeholder: "Search on bookmark, url and tags" %>
-    <%= button_tag "Search" %>
+          <div class="col-sm-4">
+            <%= button_tag 'Search', class: 'form-control' %>
+          </div>
+        </div>
+    <% end %>
+    </div>
 
-<% end %>
+  </div>
+</div>
 
-<table>
+<table class="table table-striped table-bordered">
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Short url</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Short url</th>
+    <th>Tags</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @bookmarks.each do |bookmark| %>
+  <% @bookmarks.each do |bookmark| %>
       <tr>
         <td><%= bookmark.title %></td>
         <td><%= bookmark.url %></td>
@@ -29,13 +43,16 @@
         <td><%= bookmark.all_tags %></td>
         <td><%= link_to 'Show', bookmark %></td>
         <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', bookmark, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
-<%= will_paginate @bookmarks  %>
+<div class="pagination">
+  <%= will_paginate @bookmarks %>
+</div>
+
 <br>
 
 <%= link_to 'New Bookmark', new_bookmark_path %>

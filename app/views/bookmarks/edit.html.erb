@@ -1,6 +1,16 @@
-<h1>Editing Bookmark</h1>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to "Bookmarks", bookmarks_path %>
+  </li>
+  <li> <%= @bookmark.title  %></li>
+
+  <div class="pull-right">
+    <%= link_to 'Show', @bookmark %> |
+    <%= link_to 'Back', bookmarks_path %>
+  </div>
+
+</ul>
+
+<h3>Editing Bookmark</h3>
 
 <%= render 'form', bookmark: @bookmark %>
-
-<%= link_to 'Show', @bookmark %> |
-<%= link_to 'Back', bookmarks_path %>

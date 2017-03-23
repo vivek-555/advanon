@@ -17,7 +17,8 @@ class Bookmark < ApplicationRecord
   before_save :set_website, if: :url_changed?
 
   def all_tags=(names)
-    self.tags = names.strip.split(",").map do |name|
+    # byebug
+    self.tags = names.strip.split(",").reject(&:blank?).map do |name|
       next if name.strip.blank?
       Tag.where(name: name.strip).first_or_create!
     end

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <title>Advanon</title>
+    <title>Advanon bookmarks</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,6 +9,10 @@
   </head>
 
   <body>
+  <!--<p class="notice"><%= notice %></p>-->
+  <p class="alert"><%= alert %></p>
+  <div class="container-fluid">
     <%= yield %>
+  </div>
   </body>
 </html>
